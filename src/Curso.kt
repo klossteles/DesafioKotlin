@@ -1,6 +1,7 @@
-class Curso(val nomeCurso: String, val codCurso: Int, val professorTitular: ProfessorTitular, val professorAdjunto:
-ProfessorAdjunto, var quantMaxAlunos: Int) {
+class Curso(val nomeCurso: String, val codCurso: Int, var quantMaxAlunos: Int) {
     val alunos =  mutableListOf<Aluno>()
+    var professorTitular: ProfessorTitular? = null
+    var professorAdjunto: ProfessorAdjunto? = null
 
     fun adicionarUmAluno(umAluno: Aluno): Boolean {
         if (alunos.size >= quantMaxAlunos) {
