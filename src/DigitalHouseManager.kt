@@ -13,6 +13,13 @@ class DigitalHouseManager () {
             println("Quantidade de alunos inválida.")
             return
         }
+        for (curso in cursos) {
+            if (curso.codCurso.equals(codigoCurso)) {
+                println("Código do curso inválido.")
+                return
+            }
+        }
+
         cursos.add(Curso(nome, codigoCurso, quantidadeMaximaDeAlunos))
     }
 
@@ -39,6 +46,13 @@ class DigitalHouseManager () {
             return
         }
 
+        for (professor in professores){
+            if (professor.codProfessor.equals(codigoProfessor)) {
+                println("Código do professor inválido.")
+                return
+            }
+        }
+
         professores.add(ProfessorAdjunto(nome, sobrenome, codigoProfessor, quantidadeDeHoras))
     }
 
@@ -56,6 +70,13 @@ class DigitalHouseManager () {
         if (especialidade.isEmpty()) {
             println("Especialidade do professor inválida.")
             return
+        }
+
+        for (professor in professores){
+            if (professor.codProfessor.equals(codigoProfessor)) {
+                println("Código do professor inválido.")
+                return
+            }
         }
 
         professores.add(ProfessorTitular(nome, sobrenome, codigoProfessor, especialidade))
@@ -79,6 +100,13 @@ class DigitalHouseManager () {
         if (sobrenome.isEmpty()) {
             println("Sobrenome do aluno inválido.")
             return
+        }
+
+        for (aluno in alunos) {
+            if (aluno.codAluno.equals(codigoAluno)) {
+                println("Código do aluno inválido.")
+                return
+            }
         }
 
         alunos.add(Aluno(nome, sobrenome, codigoAluno))
