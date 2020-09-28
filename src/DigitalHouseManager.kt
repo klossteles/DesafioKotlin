@@ -14,7 +14,7 @@ class DigitalHouseManager () {
             return
         }
         for (curso in cursos) {
-            if (curso.codCurso.equals(codigoCurso)) {
+            if (curso.equals(codigoCurso)) {
                 println("Código do curso inválido.")
                 return
             }
@@ -25,7 +25,7 @@ class DigitalHouseManager () {
 
     fun excluirCurso(codigoCurso: Int){
         for (curso in cursos) {
-            if (curso.codCurso.equals(codigoCurso)) {
+            if (curso.equals(codigoCurso)) {
                 cursos.remove(curso)
                 break
             }
@@ -47,7 +47,7 @@ class DigitalHouseManager () {
         }
 
         for (professor in professores){
-            if (professor.codProfessor.equals(codigoProfessor)) {
+            if (professor.equals(codigoProfessor)) {
                 println("Código do professor inválido.")
                 return
             }
@@ -73,7 +73,7 @@ class DigitalHouseManager () {
         }
 
         for (professor in professores){
-            if (professor.codProfessor.equals(codigoProfessor)) {
+            if (professor.equals(codigoProfessor)) {
                 println("Código do professor inválido.")
                 return
             }
@@ -84,7 +84,7 @@ class DigitalHouseManager () {
 
     fun excluirProfessor(codigoProfessor: Int) {
         for (professor in professores) {
-            if (professor.codProfessor.equals(codigoProfessor)) {
+            if (professor.equals(codigoProfessor)) {
                 professores.remove(professor)
                 break
             }
@@ -103,7 +103,7 @@ class DigitalHouseManager () {
         }
 
         for (aluno in alunos) {
-            if (aluno.codAluno.equals(codigoAluno)) {
+            if (aluno.equals(codigoAluno)) {
                 println("Código do aluno inválido.")
                 return
             }
@@ -115,7 +115,7 @@ class DigitalHouseManager () {
     fun matricularAluno(codigoAluno: Int, codigoCurso: Int) {
         var curso: Curso? = null
         for (c in cursos) {
-            if (c.codCurso.equals(codigoCurso)) {
+            if (c.equals(codigoCurso)) {
                 curso = c
                 break
             }
@@ -127,7 +127,7 @@ class DigitalHouseManager () {
 
         var aluno: Aluno? = null
         for (al in alunos) {
-            if (al.codAluno.equals(codigoAluno)) {
+            if (al.equals(codigoAluno)) {
                 aluno = al
                 break
             }
@@ -149,7 +149,7 @@ class DigitalHouseManager () {
     fun alocarProfessores(codigoCurso: Int, codigoProfessorTitular: Int, codigoProfessorAdjunto: Int) {
         var curso: Curso? = null
         for (c in cursos) {
-            if (c.codCurso.equals(codigoCurso)) {
+            if (c.equals(codigoCurso)) {
                 curso = c
                 break
             }
@@ -161,7 +161,7 @@ class DigitalHouseManager () {
 
         var professorTitular: Professor? = null
         for (professor in professores){
-            if (professor.codProfessor.equals(codigoProfessorTitular)) {
+            if (professor.equals(codigoProfessorTitular)) {
                 professorTitular = professor
                 break
             }
@@ -173,7 +173,7 @@ class DigitalHouseManager () {
 
         var professorAdjunto: Professor? = null
         for (professor in professores){
-            if (professor.codProfessor.equals(codigoProfessorAdjunto)) {
+            if (professor.equals(codigoProfessorAdjunto)) {
                 professorAdjunto = professor
                 break
             }
