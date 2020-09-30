@@ -10,14 +10,14 @@ class DigitalHouseManager () {
             return
         }
         if (quantidadeMaximaDeAlunos == 0) {
-            println("Quantidade de alunos inválida.")
+            println("Quantidade máxima de alunos inválida.")
             return
         }
-        for (curso in cursos) {
-            if (curso.equals(codigoCurso)) {
-                println("Código do curso inválido.")
-                return
-            }
+
+        val curso = cursos.find { it.equals(codigoCurso) }
+        if (curso != null) {
+            println("Código do curso inválido.")
+            return
         }
 
         cursos.add(Curso(nome, codigoCurso, quantidadeMaximaDeAlunos))
@@ -32,51 +32,49 @@ class DigitalHouseManager () {
         }
     }
 
-    fun registrarProfessorAdjunto(nome: String, sobrenome: String, codigoProfessor: Int, quantidadeDeHoras: Int) {
+    fun registrarProfessorAdjunto(nome: String, sobrenome: String, codigoProfessor: Int, quantidadeDeHorasMonitoria: Int) {
         if (nome.isEmpty()) {
-            println("Nome do professor inválido.")
+            println("Nome do professor adjunto inválido.")
             return
         }
         if (sobrenome.isEmpty()) {
-            println("Sobrenome do professor inválido.")
+            println("Sobrenome do professor adjunto inválido.")
             return
         }
-        if (quantidadeDeHoras.equals(0)) {
-            println("Quantidade de horas do professor inválido.")
+        if (quantidadeDeHorasMonitoria.equals(0)) {
+            println("Quantidade de horas do professor adjunto inválido.")
             return
         }
 
-        for (professor in professores){
-            if (professor.equals(codigoProfessor)) {
-                println("Código do professor inválido.")
-                return
-            }
+        val professor = professores.find { it.equals(codigoProfessor) }
+        if (professor != null) {
+            println("Código do professor adjunto inválido.")
+            return
         }
 
-        professores.add(ProfessorAdjunto(nome, sobrenome, codigoProfessor, quantidadeDeHoras))
+        professores.add(ProfessorAdjunto(nome, sobrenome, codigoProfessor, quantidadeDeHorasMonitoria))
     }
 
     fun  registrarProfessorTitular(nome: String, sobrenome: String , codigoProfessor: Int, especialidade: String ) {
         if (nome.isEmpty()) {
-            println("Nome do professor inválido.")
+            println("Nome do professor titular inválido.")
             return
         }
 
         if (sobrenome.isEmpty()) {
-            println("Sobrenome do professor inválido.")
+            println("Sobrenome do professor titular inválido.")
             return
         }
 
         if (especialidade.isEmpty()) {
-            println("Especialidade do professor inválida.")
+            println("Especialidade do professor titular inválida.")
             return
         }
 
-        for (professor in professores){
-            if (professor.equals(codigoProfessor)) {
-                println("Código do professor inválido.")
-                return
-            }
+        val professor = professores.find { it.equals(codigoProfessor) }
+        if (professor != null) {
+            println("Código do professor titular inválido.")
+            return
         }
 
         professores.add(ProfessorTitular(nome, sobrenome, codigoProfessor, especialidade))
@@ -102,36 +100,23 @@ class DigitalHouseManager () {
             return
         }
 
-        for (aluno in alunos) {
-            if (aluno.equals(codigoAluno)) {
-                println("Código do aluno inválido.")
-                return
-            }
+        val aluno = alunos.find { it.equals(codigoAluno) }
+        if (aluno != null) {
+            println("Código do aluno inválido.")
+            return
         }
 
         alunos.add(Aluno(nome, sobrenome, codigoAluno))
     }
 
     fun matricularAluno(codigoAluno: Int, codigoCurso: Int) {
-        var curso: Curso? = null
-        for (c in cursos) {
-            if (c.equals(codigoCurso)) {
-                curso = c
-                break
-            }
-        }
+        val curso = cursos.find { it.equals(codigoCurso) }
         if (curso == null) {
             println("Curso não encontrado.")
             return
         }
 
-        var aluno: Aluno? = null
-        for (al in alunos) {
-            if (al.equals(codigoAluno)) {
-                aluno = al
-                break
-            }
-        }
+        val aluno = alunos.find { it.equals(codigoAluno) }
         if (aluno == null) {
             println("Aluno não encontrado.")
             return
@@ -147,37 +132,19 @@ class DigitalHouseManager () {
     }
 
     fun alocarProfessores(codigoCurso: Int, codigoProfessorTitular: Int, codigoProfessorAdjunto: Int) {
-        var curso: Curso? = null
-        for (c in cursos) {
-            if (c.equals(codigoCurso)) {
-                curso = c
-                break
-            }
-        }
+        val curso = cursos.find { it.equals(codigoCurso) }
         if (curso == null) {
             println("Curso não encontrado.")
             return
         }
 
-        var professorTitular: Professor? = null
-        for (professor in professores){
-            if (professor.equals(codigoProfessorTitular)) {
-                professorTitular = professor
-                break
-            }
-        }
+        val professorTitular = professores.find { it.equals(codigoProfessorTitular) }
         if (professorTitular == null) {
             println("Professor titular não encontrado.")
             return
         }
 
-        var professorAdjunto: Professor? = null
-        for (professor in professores){
-            if (professor.equals(codigoProfessorAdjunto)) {
-                professorAdjunto = professor
-                break
-            }
-        }
+        val professorAdjunto = professores.find { it.equals(codigoProfessorAdjunto) }
         if (professorAdjunto == null) {
             println("Professor adjunto não encontrado.")
             return

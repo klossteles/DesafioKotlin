@@ -1,4 +1,4 @@
-class Curso(val nomeCurso: String, val codCurso: Int, var quantMaxAlunos: Int) {
+data class Curso(val nomeCurso: String, val codCurso: Int, var quantMaxAlunos: Int) {
     val alunos =  mutableListOf<Aluno>()
     var professorTitular: ProfessorTitular? = null
     var professorAdjunto: ProfessorAdjunto? = null
@@ -17,7 +17,8 @@ class Curso(val nomeCurso: String, val codCurso: Int, var quantMaxAlunos: Int) {
     }
 
     override fun toString(): String {
-        return "Curso(nomeCurso='$nomeCurso', codCurso=$codCurso, professorTitular=$professorTitular, professorAdjunto=$professorAdjunto, quantMaxAlunos=$quantMaxAlunos, alunos=$alunos)"
+        return "NomeCurso='$nomeCurso', codCurso=$codCurso, professorTitular=$professorTitular, " +
+                "professorAdjunto=$professorAdjunto, quantMaxAlunos=$quantMaxAlunos, alunos=$alunos"
     }
 
     override fun equals(other: Any?): Boolean {
